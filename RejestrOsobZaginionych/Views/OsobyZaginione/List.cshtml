@@ -1,0 +1,104 @@
+﻿@model IEnumerable<RejestrOsobZaginionych.Models.OsobaZaginiona>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index</title>
+	<link rel="stylesheet" href="/Content/bootstrap.min.css">
+
+</head>
+<body class="container">
+    <p>
+        <a href="/OsobyZaginione/List">Lista zaginionych</a> |
+        @if (ViewBag.Admin == "1")
+        {
+            <span><a href="/Admin">Zarządzanie użytkownikami</a> |</span>
+        }
+        <a href="/OsobyZaginione/Wyloguj">Wyloguj</a>
+    </p>
+    <p>
+        Filtrowanie:
+        <a href="/OsobyZaginione/List">Wszyscy</a>
+        <a href="/OsobyZaginione/List/?plec=1">Kobiety</a>
+        <a href="/OsobyZaginione/List/?plec=2">Mężczyźni</a>
+    </p>
+    @if (ViewBag.Plec == 1)
+    {
+        <p>Filtrowanie: [Płeć: Kobieta]</p>
+    }
+    else if (ViewBag.Plec == 2)
+    {
+        <p>Filtrowanie: [Płeć: Mężczyzna]</p>
+    }
+
+
+    <p>
+        @Html.ActionLink("Dodaj", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zdjecie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plec)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (ViewBag.Plec == item.Plec || ViewBag.Plec == 0)
+            {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        @if (item.Zdjecie == "")
+        {
+            <td>Brak</td>
+        }
+        else
+        {
+            <td class="text-center">
+                <img src="@Url.Content("~/zdjecia/" + item.Zdjecie)" style="max-width: 200px;"/>
+            </td>
+        }
+        @if (item.Plec == 1)
+        {
+            <td>Kobieta</td>
+        }
+        else if (item.Plec == 2)
+        {
+            <td>Mężczyzna</td>
+        }
+    </tr>
+            }
+        }
+
+    </table>
+
+	<script src="/Scripts/jquery-3.4.1.min.js"></script>
+	<script src="/Script/bootstrap.js"></script>
+</body>
+</html>

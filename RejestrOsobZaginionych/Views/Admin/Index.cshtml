@@ -1,0 +1,65 @@
+﻿@model IEnumerable<RejestrOsobZaginionych.Models.Uzytkownik>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+	<link rel="stylesheet" href="/Content/bootstrap.min.css">
+
+	<script src="/Scripts/jquery-3.4.1.min.js"></script>
+	<script src="/Script/bootstrap.js"></script>
+</head>
+<body class="container">
+    <p>
+        @Html.ActionLink("Utworz nowy", "Create") |
+		<a href="/">Lista zaginionych</a> |
+		<a href="/OsobyZaginione/Wyloguj">Wyloguj</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Haslo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aktywny)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Haslo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aktywny)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detale", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>

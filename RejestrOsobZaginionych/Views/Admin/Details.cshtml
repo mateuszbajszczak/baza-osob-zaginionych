@@ -1,0 +1,58 @@
+﻿@model RejestrOsobZaginionych.Models.Uzytkownik
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+	<link rel="stylesheet" href="/Content/bootstrap.min.css">
+
+	<script src="/Scripts/jquery-3.4.1.min.js"></script>
+	<script src="/Script/bootstrap.js"></script>
+</head>
+<body class="container">
+    <div>
+        <h4>Uzytkownik</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Haslo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Haslo)
+            </dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Aktywny)
+			</dt>
+            <dd>
+                @Html.DisplayFor(model => model.Aktywny)
+            </dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Admin)
+			</dt>
+            <dd>
+                @Html.DisplayFor(model => model.Admin)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Wróć", "Index")
+    </p>
+</body>
+</html>
