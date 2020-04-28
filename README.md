@@ -1,5 +1,7 @@
 # Baza Osób Zaginionych
 
+### autor: Mateusz Bajszczak 
+
 ## struktura projektu
 ### Kontrolery
 - OsobyZaginioneController - obsługa listy i dodawania osób zaginionych; logowanie i rejestracja
